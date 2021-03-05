@@ -1,0 +1,71 @@
+1. This is the first program which introduces the use of *printf()*. 
+
+```
+#include<iostream>  //Preprocessor Directives (this is an example of inline comment starting with //)
+
+/* This is an example of blocked comment which means that if you want to create multilined comments then it should be enclosed this way.
+	And this comment is going to tell you more about this program, that this will do some printing job
+*/
+
+int main()                                       // main is a miscelleneous function. Your program should have exactly one main() function
+{
+	printf("Hello World! \n");                     // printf() is a function, which prints on console the value we give it as an input
+                                                 // In the line above, \n is used to feed new line on the console. \n is an escape character
+	printf("Welcome to \\CSC101\\. \n\n"); 
+	printf("Socarates said,\t \"Man is mortal\""); // \t is another escape character, which insert 4 spaces in the console
+	return 0;                                      // returning the value 0
+}
+```
+
+2. The following program creates a simple integer type variable named _taka_. This program takes the amount in taka as input from the user and convert it into dollars. 
+
+```
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int taka;
+    std::cout << "Enter BD taka:";
+    std::cin >> taka;
+
+    float dollar = taka / 84.73;
+    //std::cout << "BDT " << taka << " = $" << dollar << std::endl;
+    printf("BDT %d = $%.2f\n", taka, dollar);
+}
+```
+
+3. The program below calculates the time difference between two given times. *Input* of the program are four integer values, starting time in hours _sh_, starting time in minutes _sm_, ending time in houres _eh_ and ending time in minutes _em_. *Output* of the program is the time difference in minutes _totalminutes_, assuming that the starting and ending time is always in a single day and ending hour is always greater than starting hours. 
+
+```
+#include<iostream>
+using namespace std;
+
+int main()
+{
+	int s_h;
+	int s_m;
+	int e_h;
+	int e_m;
+
+	std::cout << "Enter starting hours:";
+	std::cin >> s_h;
+	std::cout << "Enter starting minutes:";
+	std::cin >> s_m;
+
+	std::cout << "Enter ending hours:";
+	std::cin >> e_h;
+	std::cout << "Enter ending minutes:";
+	std::cin >> e_m;
+	
+
+	int start_time = s_h * 60 + s_m;
+	int end_time = e_h * 60 + e_m;
+
+	int totalminutes = end_time - start_time;
+
+	printf("total minute = %d", totalminutes);
+
+}
+```
+Next: Datatypes, variables and operators
