@@ -1,0 +1,509 @@
+[Previous:Variables and Operators](https://github.com/Romasa/Introductory-Programming-with-C-Plus-Plus/blob/main/2.%20Variables%20and%20Operators.md)
+
+# Decision Making using If-else block
+
+
+## Simple if() statement with no else block
+
+
+1. The below program will convert a any given number to its absolute value.
+
+```
+int main()
+{
+	int num;
+	cout << "Enter an integer number:";
+	cin >> num;
+
+	if (num < 0)
+	{
+		num = num * -1;
+	}
+	cout << "Absolute value of " << num << " is " << num <<endl;
+	return 0;
+    
+}
+```
+
+## Simple if-else block
+2. Here we are presenting you a program which will determine whether the given number is positive or negative using a simple if-else block.
+
+```
+int main()
+{
+	int num;
+
+	cout << "Enter any integer number:";
+	cin >> num;
+	if (num < 0)
+	{
+		cout << "The number is negative" << endl;
+	}
+	else
+	{
+		cout << "The number is positive" << endl;
+	}
+	return 0;
+}
+```
+
+3. The program below, takes two numbers (numerator and denominator) as input and performs a simple check whether the denomiator is zero or not. Because if the denominator is zero then the result would be infinity.
+In this program, if the denominator is a non-zero number then we will perform the calculation and show the result otherwise we will print a message that "division can't be performed".
+
+```
+int main()
+{
+  float num, denom;
+
+	cin >> num;
+	cin >> denom;
+
+	if (denom == 0)
+	{
+		cout << "Division is not possible" << endl;
+	}
+	else
+	{
+		float result = num / denom;
+		cout << result << endl;
+	}
+}
+```
+
+4. The program below finds the smallest number of the two given numbers.
+
+```
+int main()
+{
+	float num1, num2, min;
+
+	cout << "Enter a value: ";
+	cin >> num1;
+
+	cout << "Enter another value: ";
+	cin >> num2;
+
+	if (num1 < num2)
+	{
+		min = num1;
+	}
+	else
+	{
+		min = num2;
+	}
+	cout << "The smallest of the two numbers are: " << min << endl;
+	return 0;
+  }
+  ```
+## Nested if-else 
+
+5. Now lets expand the program to find the smallest number of the three given numbers
+
+```
+int main()
+{
+  float num1, num2, num3;
+  cin >> num1 >> num2 >> num3; // 1, 8 , 0
+
+	if (num1 < num2)
+	{
+		if (num1 < num3)
+		{
+			cout << num1 << " is the smallest " << endl;
+		}
+		else
+		{
+			cout << num3 << " is the smallest" << endl;
+		}
+	}
+	else
+	{
+		if (num2 < num3)
+		{
+			cout << num2 << " is the smallest" << endl;
+		}
+		else
+		{
+			cout << num3 << " is the smallest" << endl;
+		}
+		
+	}
+
+}
+
+## Use of Logical Operators in if-else
+
+6. The same program of finding the smallest value among three numbers can be done more elegantly using the logical operatos
+
+```
+int main()
+{
+  int num1, num2, num3;
+
+	cin >> num1 >> num2 >> num3;
+
+	if ((num1 < num2) && (num1 < num3))
+	{
+		cout << num1 << " is the smallest " << endl;
+	}
+	else if ((num2 < num3) && (num2 < num1))
+	{
+		cout << num2 << " is the smallest " << endl;
+	}
+	else if ((num3 < num2) && (num3 < num1))
+	{
+		cout << num3 << " is the smallest " << endl;
+	}
+	else
+	{
+		cout << "All values are equal" << endl;
+	}
+  return 0;
+}
+
+7. The use of logical operators can be elaborated using another example where the input is any character and you have to determine whether the character is a vowel, a consonant, a number or any other special character.
+
+```
+int main()
+{
+  char ch;
+	cin >> ch;
+
+	if (ch == 'a' || ch == 'i' || ch == 'e' || ch == 'o' || ch == 'u' ||
+		ch == 'A' || ch == 'I' || ch == 'E' || ch == 'O' || ch == 'U')
+	{
+		cout << "Input is a vowel" << endl;
+	}
+	else if ((ch >= 'A' && ch <= 'Z') || (ch >= 97 && ch <= 122))
+	{
+		cout << "Input is a consonant" << endl;
+	}
+	else if(ch >= 48 && ch <= 57) // 48 <= ch <= 57, if ch is in this range then its a number
+	{
+		cout << "Input is a number" << endl;
+	}
+	else
+	{
+		cout << "Input is a special character" << endl;
+	}
+}
+```
+
+## if-else ladder
+
+8. Given a student's total marks as input, print the grade which he earned according to the following criteria:
+    
+    Marks range | Grade
+    -------------------
+    90 - 100    | A
+    80 - 89     | B
+    70 - 79     | C
+    60 - 69     | D
+    less than 60|F 
+    
+```
+int main()
+{
+  int marks;
+	cin >> marks;
+	/*
+	if (marks >= 70 && marks < 80)
+	{
+		cout << "C" << endl;
+	}
+	else if (marks >= 80 && marks < 90)
+	{
+		cout << "B" << endl;
+	}
+	else if (marks >= 90 && marks <= 100)
+	{
+		cout << "A" << endl;
+	}
+	else if (marks >= 60 && marks < 70)
+	{
+		cout << "D" << endl;
+	}
+	else
+	{
+		cout << "F" << endl;
+	}
+}
+```
+
+another way of writing the same program is given below without the use of logical operators. But in this case, the **order** of the if statements **does matter**. Try changing the order of the if blocks and analyse the result yourself.
+
+```
+int main()
+{
+  if (marks >= 90)
+	{
+		cout << "A" << endl;
+	}
+	else if (marks >= 80)
+	{
+		cout << "B" << endl;
+	}
+	else if (marks >= 70)
+	{
+		cout << "C" << endl;
+	}
+	else if (marks >= 60)
+	{
+		cout << "D" << endl;
+	}
+	else
+	{
+		cout << "F" <<endl;
+	}
+	return 0;
+}
+```
+
+9. Write a program which will take a year as an integer input from the user and determine whether the given year is leap year or not.
+
+```
+int main()
+{
+	int year;
+
+	cout << "Enter the year: ";
+	cin >> year;
+
+	if (year % 400 == 0 || (year % 4 == 0 && year % 100 != 0))
+	{
+		cout << year << " is a leap year" <<endl;
+	}
+	else
+	{
+		cout << year << " is not a leap year" << endl;
+	}
+	return 0;
+}
+```
+## An interesting problem of Nested-if
+
+10. Suppose you have a box full of red, blue and white colored balls. The number of red, blue and white colored balls are random. You can color white balls to either red or blue color such that the number of red and blue colored balls will be equal.
+There might be some cases when you can not color the white balls such that the number of red color and blue colored balls become equal, in which case, your program should print a proper error message.
+
+```
+int main()
+{
+	int red, blue, white, minwhite;
+	int total;
+	cout << "Number of red colored balls:";
+	cin >> red;
+
+	cout << "Number of blue colored balls:";
+	cin >> blue;
+
+	cout << "Number of white colored balls:";
+	cin >> white;
+
+	total = red + blue + white;
+
+	if (total % 2 == 0)
+	{
+		if (red > blue)
+		{
+			minwhite = red - blue;
+			if (white < minwhite)
+			{
+				cout << "Number of white balls are insufficient";
+			}
+			else
+			{
+				blue = blue + minwhite;
+				white = white - minwhite;
+				
+				if (white % 2 == 0)
+				{
+					blue = blue + white / 2;
+					red = red + white / 2;
+					white = 0;
+
+					cout << "Red balls = " << red;
+					cout << " blue balls = " << blue <<endl;
+				}
+				else
+				{
+					cout << "Number of white balls are odd" << endl;
+				}
+			}
+		}
+		else
+		{
+			minwhite = blue - red;
+			if (white < minwhite)
+			{
+				cout << "Number of white balls are insufficient";
+			}
+			else
+			{
+				red = red + minwhite;
+				white = white - minwhite;
+
+				if (white % 2 == 0)
+				{
+					blue = blue + white / 2;
+					red = red + white / 2;
+					white = 0;
+
+					cout << "Red balls = " << red;
+					cout << " blue balls = " << blue << endl;
+				}
+				else
+				{
+					cout << "Number of white balls are odd" << endl;
+				}
+			}
+		}
+	}
+	else
+	{
+		cout << "This problem can't be solved" << endl;
+	}
+
+	return 0;
+}
+```
+The above solution can be optimised by reducing the number of lines of code. Try to attempt the problem so that I can be written in lesser number of lines of code
+
+# Decision Making using Switch-case
+
+11. Write a program which takes two operands and one operator from the user and perform the requested operation using switch-case statement
+
+```
+int main()
+{
+	float a, b;
+	float result;
+	char op;
+
+	
+	cout << "Enter the first operand:";
+	cin >> a;
+
+	cout << "Enter the second operand:";
+	cin >> b;
+
+	cout << "Enter the operator you want to perform: (+, -, *, /):";
+	cin >> op;
+	switch (op)
+	{
+	case '+':
+		result = a + b;
+		cout << "result = " << result << endl;
+		break;
+
+	case '-':
+		result = a - b;
+		cout << "result = " << result << endl;
+		break;
+
+	case '*':
+		result = a * b;
+		cout << "result = " << result << endl;
+		break;
+
+	case '/':
+		if (b == 0)
+		{
+			cout << "denominator can't be zero" << endl;
+		}
+		else
+		{
+			result = a / b;
+			cout << "result = " << result << endl;
+		}
+		break;
+
+	default:
+		cout << "Invalid operator!" << endl;
+	}
+
+	return 0;
+}
+```
+
+12. Suppose the total marks of a student is given as input. Write a program which can print the grade which he earned according to the following criteria:
+    
+    Marks range | Grade
+    -------------------
+    90 - 100    | A
+    80 - 89     | B
+    70 - 79     | C
+    60 - 69     | D
+    less than 60| F 
+    
+```
+int main()
+{
+	int marks;
+	cout << "Enter the marks:";
+	cin >> marks;
+
+	switch (marks / 10)
+	{
+	case 10:
+	case 9:
+		cout << "A grade";
+		break;
+	case 8:
+		cout << "B grade";
+		break;
+	case 7:
+		cout << "C grade";
+		break;
+	case 6:
+		cout << "D grade";
+		break;
+	default:
+		cout << "Fail";
+	}
+}
+
+```
+
+# Decision Making using Ternary Operator
+
+Ternary Operator can only be applied if there is only one line of statement under if block and only one line of statement under else block. Moreover, it can replace if-else block, not single if statement. Nesting can be applied inside ternary operator
+
+13. Given two numbers, find the largest among them using ternary opeator
+
+
+```
+int main()
+{
+	float a, b, max;
+	cout << "Enter first value:";
+	cin >> a;
+	cout << "Enter second value:";
+	cin >> b;
+	max = (a > b) ? a : b;
+	cout << "Maximum is " << max << endl;
+	return 0;
+}
+```
+
+## Nester Ternary Operator
+
+14. Given three numbers, find the largest among them using ternary operator
+
+```
+int main()
+{
+	float a, b, c, max;
+	cout << "Enter first value:";
+	cin >> a;
+	cout << "Enter second value:";
+	cin >> b;
+	cout << "Enter third value:";
+	cin >> c;
+	max = (a > b) ? ((a > c) ? a : c) : ((b > c) ? b : c);
+	cout << "Maximum is " << max << endl;
+	return 0;
+}
+```
+Have a happy day!
+
+[Next: Iteartive Statements]()
